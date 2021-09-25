@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'raleway';
+    src: url('../fonts/raleway.ttf');
+}
+
+*{
+    font-family: 'raleway'
+}
+
+.jumbotron {
+    /* background: #fcfcfc !important; */
+    background: #fff !important;
+}
+
+.myblue {
+    background: #07b7b7 !important;
+    color: #fff !important;
+    border-color:#07b7b7 !important;
+
+}
+
+.mygrey{
+    background: #313335 !important;
+    color: #fff !important;
+    border-color:#313335 !important;
+}
+
+
+body{
+    background: #fff !important;
+    padding-bottom:50px !important;
+}
+
+.btn-primary{
+    border-color: #07b7b7 !important
+}
+
+.myblue:hover{
+    background-color: #313335 !important;
+    border-color: #313335 !important
+
+}
+.btn-primary:hover{
+    background-color: #313335 !important;
+    border-color: #313335 !important
+
+}
+
