@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block metablock %}
+{% load static %}
+<title>BC | Home</title>
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock metablock %}
+{% block bodyblock %}
+<div class="jumbotron">
+    <div class='row'>
+
+        <div class='col-lg-6 col-sm-11 col-md-6 col-11 login-modal' style='height:500px;'>
+
+            <div class='col-12' style="margin-top:50px">
+
+                <div style="background:url('/media/{{user.customer.profile_pic}}'); border-radius:200px; background-position: center center;width:200px; height:200px;margin:0 auto; background-size:cover">
+                </div>
+
+            </div>
+            <br>
+            <div class='col-12' style="">
+
+                <div class='' style="text-align:center;width:200px;margin: auto;border-radius:3px">
+                    {{user.username | title}}
+                </div>
+
+
+                <div class='' style="text-align:center;width:200px;margin: auto;border-radius:3px">
+                    {{user.email}}
+                </div>
+
+            </div>            
+            <br>
+            <div class='col-12' style="">
+<a href="{% url 'customers:update' pk=user.pk%}" class='myblue' style='text-decoration:none'>
+                <div class='myblue'  style="text-align:center;width:200px;margin: 0 auto; padding:10px;border-radius:5px">
+                    Edit
+                </div>
+</a>
+            </div>
+            
+
+        </div>
+             
+              <div class='col-lg-5 col-sm-11 col-md-5 col-11' style='height:500px; margin:0 auto;'>
+
+
+                <a class='opin' href="{% url 'under_dev' %}" style='height:500px; border-radius:0px 0 0px 5px;padding-top:200px; background:#047979; width:33%;display:block;float:left;'><img src="{% static "images/services/atm.png" %}" style="width:100%"></a>
+                <a class='opin' href="{% url 'under_dev' %}" style='height:500px; padding-top:200px; background:#0FA3A8; width:33%;display:block;float:left;'><img src="{% static "images/services/invest.png" %}" style="width:100%"></a>
+                <a class='opin' href="{% url 'under_dev' %}" style='height:500px; border-radius:0 0px 5px 0;padding-top:200px; background:#07b7b7; width:33%;display:block;float:left;'><img src="{% static "images/services/transact.png" %}" style="width:100%"></a>
+
+
+  
+            
+
+        </div>
+        
+
+    </div>
+    
+
+</div>
+<div class='footer'>
+            <p style='text-align:center'>©2021 All rights reserved</p>
+            <p style='text-align:center'>No responsibility</p>
+    </div>
+{% endblock bodyblock %}

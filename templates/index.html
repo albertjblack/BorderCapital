@@ -1,27 +1,51 @@
 {% extends 'base.html' %}
 {% block metablock %}
+{% load static %}
 <title>BC | Home</title>
 {% endblock metablock %}
 {% block bodyblock %}
     <div class="jumbotron">
-        <h1 class="display-3">Border Capital Inc.</h1>
+        <div class='row'>
+            <div class='col-lg-6'>
+             <h1 class="display-4">Border Capital Inc.</h1>
         {% if user.is_authenticated %}
         <p class="lead">Welcome @{{user.username}}</p>
         {% else %}
-        <p class="lead">No more borders.</p>
         {% endif %}
         <hr class="my-2">
+        <hr class="my-2">
         {% if user.is_authenticated %}
-        <p>Your journey towards success</p>
+        <p>Locations near me</p>
+        <div style='width:100%; margin:0 auto;' ><a href="{% url 'atms:locate' %}"><img src="{% static 'images/locating.gif'%}" style='width:100%'></a></div>
 
+<a class="btn btn-lg mygrey" style='width:100%;margin-bottom:10px' href="{% url 'atms:locate' %}" role="button">Search</a>
         {% else %}
-        <p>Your journey towards success</p>
-
+        <p class="lead">Welcome to a faster and more reliable future.</p>
+        <br>
+        <div style='width:100%; margin:0 auto' href="{% url 'customers:signup' %}" ><a href="{% url 'customers:signup' %}"><img src="{% static 'images/handshake.gif' %}" style='width:100%'></a></div>
 <p class="lead">
-            <a class="btn btn-primary btn-lg myblue" href="" role="button">Start</a>
+            <a class="btn btn-lg mygrey" style='width:100%;' href="{% url 'customers:signup' %}" role="button">Join the movement</a>
         </p>
         {% endif %}
         
-        <div style="height:50vh"></div>
+            </div>
+            <a class='col-lg-6' style='position:relative; margin-bottom:10px' href="{% url 'atms:home' %}">
+            <img src="{% static 'images/atms.gif'%}" class='index-img' style='width:100%;border-left:10px solid #016d6d;border-right:10px solid #016d6d;border-radius:10px'>
+            <p class="btn mydarkgreen" style="position:absolute; margin-left:-80%" role="button">ATMs</p>            
+            </a>
+            <a class='col-lg-6' style='position:relative;margin-bottom:10px' href="{% url 'investing:home' %}">
+            <img src="{% static 'images/invest.gif'%}" class='index-img' style='width:100%;border-left:10px solid #016d6d;border-right:10px solid #016d6d;border-radius:10px'>
+            <p class="btn mydarkgreen" style="position:absolute; margin-left:-80%" role="button">Invest</p>            
+            </a>
+            <a class='col-lg-6' style='position:relative;' href="{% url 'transact:info' %}">
+            <img src="{% static 'images/online.gif'%}" class='index-imgw' style='width:100%;border-left:10px solid #016d6d;border-right:10px solid #016d6d;border-radius:10px'>
+            <p class="btn mydarkgreenw" style="position:absolute; margin-left:-80%" role="button">Transact</p>            
+            </a>
+        </div>
     </div>
+
+               <div class='footer'>
+            <p style='text-align:center'>©2021 All rights reserved</p>
+            <p style='text-align:center'>No responsibility</p>
+        </div>
 {% endblock bodyblock %}

@@ -1,0 +1,18 @@
+.profile_pic{
+    object-fit: cover;
+    width:200px;
+    height:200px;
+    border-radius:200px;
+    margin:0 auto;
+   
+}
+
+.nobg{
+    background: none;
+    display: block;
+    width: 100%;
+}
+
+.opin:hover{
+    
+}

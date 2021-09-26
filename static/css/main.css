@@ -2,9 +2,30 @@
     font-family: 'raleway';
     src: url('../fonts/raleway.ttf');
 }
-
+html{
+    position: relative;
+}
 *{
+    margin: 0;
+    padding: 0;
     font-family: 'raleway'
+}
+
+.footer {
+    background-color: #555;
+    color:white;
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    overflow: hidden;
+}
+.login-modal {
+    width: 330px;
+    margin: 0 auto;
+    height: auto;
+    box-shadow: 1px 1px 50px rgb(197, 197, 197);
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .jumbotron {
@@ -19,10 +40,23 @@
 
 }
 
-.mygrey{
-    background: #313335 !important;
+.mydarkgreen {
+    background: #016d6d !important;
     color: #fff !important;
-    border-color:#313335 !important;
+    border-color:#016d6d !important;
+
+}
+.mydarkgreenw{
+    background: #016d6d !important;
+    color: #fff !important;
+    border-color:#016d6d !important;
+}
+
+
+.mygrey{
+    background: #555 !important;
+    color: #fff !important;
+    border-color:#555 !important;
 }
 
 
@@ -36,13 +70,18 @@ body{
 }
 
 .myblue:hover{
+    background-color: #016d6d !important;
+    border-color: #016d6d !important
+
+}
+.mygrey:hover{
     background-color: #313335 !important;
     border-color: #313335 !important
 
 }
 .btn-primary:hover{
-    background-color: #313335 !important;
-    border-color: #313335 !important
+    background-color: #016d6d !important;
+    border-color: #016d6d !important
 
 }
 

@@ -9,11 +9,8 @@
         <hr class="my-2">
         <p>Try logging in</p>
         <p class="lead">
-            <a class="btn btn-primary btn-lg myblue" href="{% url '' %}" role="button">Home</a>
-        </p>
-        <p>If you just activated your membership</p>
-        <p class="lead">
-            <a class="btn btn-primary btn-lg myblue" href="{% url '' %}" role="button">Go to Dashboard</a>
+            <a class="btn btn-primary btn-lg myblue" href="{% url 'customers:login' %}" role="button">Log in</a>
+            <a class="btn btn-primary btn-lg myblue" href="{% url 'index' %}" role="button">Home</a>
         </p>
         <div style="height:50vh"></div>
     </div>

@@ -25,9 +25,9 @@ MEDIA_DIR = Path.joinpath(BASE_DIR,'media')
 SECRET_KEY = 'django-insecure-do71l69p*q(vh2_m4^roy@1p8k&36yur@a3^!vk9w*k3y8mx+t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 1
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','192.168.1.230']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'handlers',
     'atms',
     'investing',
+    'transact',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,7 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'bootstrap4',
+    'crispy_forms',
+    'currencies'
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,13 +98,6 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
-PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.Argon2PasswordHasher',
-    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
-    'django.contrib.auth.hashers.BCryptPasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
-    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
-]
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -151,4 +151,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bordercapitalinc@gmail.com'
 EMAIL_HOST_PASSWORD = 'BorderCapital123'
 
-#
+# login / out redirect
+LOGIN_REDIRECT_URL = "index"
+LOGOUT_REDIRECT_URL = "index"

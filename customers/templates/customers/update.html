@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block metablock %}
+{% endblock%}
+
+{% block bodyblock %}
+<div class='jumbotron'>
+<div class='login-modal'>
+    <h1>Update</h1>
+    <form method='POST' enctype='multipart/form-data'>
+    {% csrf_token %}
+        {{form | crispy}}
+        <br>
+        <input style='width:100%'type='submit' value='Edit' class='btn btn-primary myblue'>
+       
+
+    </form>
+    <br>
+    <p style='text-align:center'>
+    <a style='color:#000' class='' href="{% url 'customers:dashboard' %}">Go back</a> | 
+    <a class=''  style='color:#000' href="{% url 'changepassword' %}">Update password</a>
+    </p>
+</div>
+</div>
+
+{% endblock%}
+
+{% block scriptblock %}
+{% endblock%}

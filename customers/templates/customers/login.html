@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block metablock %}
+{% endblock%}
+
+{% block bodyblock %}
+<div class='jumbotron'>
+{% if user.is_authenticated%}
+<div class='login-modal'>
+    <h1>@{{user.username}}</h1>
+    
+        <p style='text-align:center'>You are logged in! <a href="{% url 'index' %}">Home</a> | <a href="{% url 'customers:dashboard' %}">Dashboard</a></p>
+</div>
+{% else%}
+<div class='login-modal'>
+    <h1>Login</h1>
+    <form method='POST'>
+    {% csrf_token %}
+        {{form | crispy}}
+        <input style='width:100%'type='submit' value='Login' class='btn btn-primary myblue'>
+        <br>
+        <br>
+        <p style='text-align:center'><a href="{% url 'customers:signup' %}">Signup</a> | <a href="{% url 'password_reset' %}">Reset password</a></p>
+    </form>
+</div>
+{% endif %}
+</div>
+{% endblock%}
+
+{% block scriptblock %}
+{% endblock%}

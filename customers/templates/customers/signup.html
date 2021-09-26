@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block metablock %}
+{% endblock%}
+
+{% block bodyblock %}
+<div class='jumbotron'>
+<div class='login-modal'>
+    <h1>Signup</h1>
+    <form method='POST'>
+    {% csrf_token %}
+        {{form | crispy}}
+        <input style='width:100%'type='submit' value='Sign up' class='btn btn-primary myblue'>
+       <br><br>
+        <p style='text-align:center'><a href="{% url 'customers:login' %}">Login</a> if you already registered</p>
+
+    </form>
+</div>
+</div>
+
+{% endblock%}
+
+{% block scriptblock %}
+{% endblock%}

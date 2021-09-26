@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.views import generic
 
 # Create your views here.
-def handler500(request):
-    return render(request,'base/handler500.html')
+def handler500(request, *args, **kwargs):
+    return render(request,'handlers/500.html')
 
-def handler404(request,exception):
-    return render(request,'base/handler404.html',context=exception)
+def handler404(request, *args, **kwargs):
+    return render(request,'handlers/404.html')

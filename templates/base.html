@@ -10,6 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'css/w3-navbar.css' %}">
         <link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <link rel="stylesheet" href="{% static 'scrollbtn/main.css' %}">
         <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
         <link rel="icon" href="{% static 'images/logo/bc-logo.svg' %}" sizes="any" type="image/svg+xml">
         <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
@@ -17,52 +18,41 @@
 
     <body>
         <div class="mytopnav" id="myTopnav">
-            <a href="" class="active"><img src="{% static 'images/logo/bc_logo.svg' %}" width="20px"></a></span>
+            <a href="{% url 'index' %}" class="active"><img src="{% static 'images/logo/bc_logo.svg' %}" width="20px"></a></span>
             {% comment %} <a href="#about">About</a> {% endcomment %}
             {% if user.is_authenticated %}
-            <div class="mydropdown">
-                <button class="mydropbtn mynavlink">{{user.username | title}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
-                        class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
-                </button>
-                <div class="mydropdown-content">
-                    {% if user.userprofile.is_member %}
-                    <a href="">Dashboard</a>
-                    {% comment %} <a href="{% url 'index' %}">Friends</a> {% endcomment %}
-                    {% else %}
-
-                    <a href="">Activate</a>
-                    {% endif %}
-                    <a class='mynavlink' href="">Change Password</a>
-
+                <div class="mydropdown">
+                    <button class="mydropbtn mynavlink">{{user.username | title}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                            class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg>
+                    </button>
+                    <div class="mydropdown-content">
+                        <a href="{% url 'customers:dashboard' %}">Dashboard</a>
+                        <a class='mynavlink' href="{% url 'changepassword' %}">Change Password</a>
+                    </div>
                 </div>
-            </div>
-            <div class="mydropdown">
-                <button class="mydropbtn mynavlink">University
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
-                        class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                        <path
-                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
-                    </svg>
-                </button>
-                <div class="mydropdown-content">
-                    {% if user.userprofile.is_member %}
-                    <a href="">Courses</a>
-                    <a href="">Professors</a>
-                    {% comment %} <a href="{% url 'index' %}">Friends</a> {% endcomment %}
-                    {% else %}
-                    <a href="">Activate Membership</a>
-                    {% endif %}
+                <div class="mydropdown">
+                    <button class="mydropbtn mynavlink">BC inc
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fff"
+                            class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                        </svg>
+                    </button>
+                    <div class="mydropdown-content">
+                        <a href="">ATMs</a>
+                        <a href="">Investing</a>
+                        <a href="">Transact Online</a>
+                        <a target="_blank" href="https://instagram.com/border_capital" >Instagram [0]</a>
+                    </div>
                 </div>
-            </div>
-            <a href="" class='mynavlink'>Home</a>
-            <a href="" class='mynavlink'>Log Out</a>
+                <a href="{% url 'customers:logout' %}" class='mynavlink'>Log Out</a>
             {% else %}
-            <a href="">Login</a>
-            <a class='mynavlink' href="">Register</a>
+                <a href="{% url 'customers:login' %}">Login</a>
+                <a class='mynavlink' href="{% url 'customers:signup' %}">Sign up</a>
             {% endif %}
             <a style="font-size:15px;background:#313335" class="myicon" onclick="myFunction()"><svg
                     xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 20 25" width="20" height="20">
@@ -71,11 +61,38 @@
                     <rect y="20" width="20" height="4" id="bottom-line"></rect>
                 </svg></a>
         </div>
-
         {% block bodyblock %}
         {% endblock bodyblock %}
         <script src="{% static 'js/w3-navbar.js' %}"></script>
         {% block scriptsblock %}{% endblock scriptsblock %}
+        {% block footerblock %}
+ {% comment %}        <div class='footer'>
+            <p style='text-align:center'>©2021 All rights reserved</p>
+            <p style='text-align:center'>No responsibility</p>
+        </div> {% endcomment %}
+        {% endblock footerblock %}
+        <button onclick="topFunction()" id="myBtn" title="Go to top">↑</button>
+        <script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
     </body>
 
 </html>
